@@ -38,3 +38,36 @@ th, td {
     padding: 8px;
     text-align: left;
 }
+/* New CSS code (for form inputs, buttons, etc.) */
+input[type="text"], input[type="email"], button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%; /* Make inputs full-width for mobile responsiveness */
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.message {
+    font-size: 16px;
+    color: green;
+}
+
+/* Optional responsive adjustments */
+@media (max-width: 768px) {
+    input[type="text"], input[type="email"], button {
+        width: 100%;
+        font-size: 14px;
+    }
+}
