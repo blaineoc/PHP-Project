@@ -1,0 +1,119 @@
+<?php
+$servername = "blaineproject";
+$username = "root";
+$password = "";
+$dbname = "Gaelic_Games_Club";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch fixtures from the database
+$sql = "SELECT f.fixture_id, e.name AS event_name, t1.name AS home_team, t2.name AS away_team, f.fixture_date, f.location
+        FROM fixtures f
+        JOIN events e ON f.event_id = e.event_id
+        JOIN teams t1 ON f.home_team_id = t1.team_id
+        JOIN teams t2 ON f.away_team_id = t2.team_id";
+$result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fixtures - Gaelic Games Club</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Fixtures - Gaelic Games Club</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="members.php">Members</a></li>
+            <li><a href="teams.php">Teams</a></li>
+            <li><a href="events.php">Events</a></li>
+            <li><a href="fixtures.php">Fixtures</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Upcoming Fixtures</h2>
+        <table>
+            <tr>
+                <th>Event</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Fixture Date</th>
+                <th>Location</th>
+            </tr>
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>{$row['event_name']}</td>
+                            <td>{$row['home_team']}</td>
+                            <td>{$row['away_team']}</td>
+                            <td>{$row['fixture_date']}</td>
+                            <td>{$row['location']}</td>
+                        </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>No fixtures found</td></tr>";
+            }
+            ?>
+        </table>
+
+        <h3>Add New Fixture</h3>
+        <form action="add_fixture.php" method="post">
+            <label for="event_id">Event:</label>
+            <select name="event_id" id="event_id">
+                <?php
+                $events = $conn->query("SELECT event_id, name FROM events");
+                while ($event = $events->fetch_assoc()) {
+                    echo "<option value='{$event['event_id']}'>{$event['name']}</option>";
+                }
+                ?>
+            </select><br>
+
+            <label for="home_team_id">Home Team:</label>
+            <select name="home_team_id" id="home_team_id">
+                <?php
+                $teams = $conn->query("SELECT team_id, name FROM teams");
+                while ($team = $teams->fetch_assoc()) {
+                    echo "<option value='{$team['team_id']}'>{$team['name']}</option>";
+                }
+                ?>
+            </select><br>
+
+            <label for="away_team_id">Away Team:</label>
+            <select name="away_team_id" id="away_team_id">
+                <?php
+                $teams = $conn->query("SELECT team_id, name FROM teams");
+                while ($team = $teams->fetch_assoc()) {
+                    echo "<option value='{$team['team_id']}'>{$team['name']}</option>";
+                }
+                ?>
+            </select><br>
+
+            <label for="fixture_date">Fixture Date:</label>
+            <input type="date" name="fixture_date" id="fixture_date" required><br>
+
+            <label for="location">Location:</label>
+            <input type="text" name="location" id="location" required><br>
+
+            <button type="submit">Add Fixture</button>
+        </form>
+    </main>
+</body>
+
+</html>
+
+<?php
+$conn->close();
+?>
