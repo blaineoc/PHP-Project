@@ -1,0 +1,19 @@
+# Gaelic Games Club Website
+
+This is a dynamic web application for managing a Gaelic Games Club, built using PHP, MySQL, and JavaScript. The website allows users to view and manage members, teams, events, fixtures, and results for the club.
+
+## Features
+
+- **Homepage**: Welcome page with navigation to all sections of the website.
+- **Members Page**: Displays a list of all club members, and allows the addition, editing, and deletion of members.
+- **Teams Page**: Shows all teams and their members. You can also assign members to teams.
+- **Events Page**: Displays upcoming events, and allows the addition and editing of events.
+- **Fixtures Page**: Shows fixtures for each event and allows the input of results after matches.
+- **AJAX Functionality**: Certain pages update dynamically without reloading, improving the user experience.
+
+## Technologies Used
+
+- **PHP**: Server-side scripting to handle database interactions.
+- **MySQL**: Database management system to store data related to members, teams, events, and fixtures.
+- **HTML/CSS**: For front-end structure and styling.
+- **JavaScript**: For dynamic updates and interactivity (AJAX).
