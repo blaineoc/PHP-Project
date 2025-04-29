@@ -1,7 +1,0 @@
-<form id="addMemberForm">
-    <input type="text" id="firstName" name="first_name" placeholder="First Name" required>
-    <input type="text" id="lastName" name="last_name" placeholder="Last Name" required>
-    <input type="email" id="email" name="email" placeholder="Email" required>
-    <button type="submit">Add Member</button>
-</form>
-<div id="message"></div>

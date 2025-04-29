@@ -1,0 +1,183 @@
+:root {
+    --primary-color: #2C5530;
+    --secondary-color: #FFA500;
+    --text-color: #333;
+    --light-bg: #f5f5f5;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */    <link rel="stylesheet" href="css/home.css">
+.top-bar {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 0;
+    font-size: 0.9em;
+}
+
+.contact-info span {
+    margin-right: 20px;
+}
+
+.social-links a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: white;
+}
+
+/* Navigation Styles */
+.main-nav {
+    background: var(--primary-color);
+    padding: 15px 0;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: 0.3s ease;
+}
+
+.main-nav a:hover {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.cta-buttons {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    margin-left: 15px;
+}
+
+/* Grid Layout */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+/* News Section */
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.news-item img {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+/* Fixtures Section */
+.fixture-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: var(--light-bg);
+    border-radius: var(--border-radius);
+}
+
+/* Footer Styles */
+.main-footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 40px 0 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+}

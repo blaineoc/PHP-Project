@@ -1,0 +1,38 @@
+Reflect real fixtures in database, vs other teams....
+Add fixture doesn't work
+Merch should not be hard coded, but have it's own table
+How do you remove events?
+Be able to checkout cart using $_SESSION, and have an orders and orders_items MySQL tables
+
+In Database Generator:
+
+$sql = "CREATE TABLE Orders (
+  order_id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  total_amount DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
+) ENGINE=InnoDB;";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Table created successfully<br>";
+} else {
+  echo "Error creating table: " . $conn->error;
+}
+
+$sql = "CREATE TABLE Order_Items (
+    order_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    merchandise_id INT NOT NULL,
+    quantity INT NOT NULL,
+    subtotal DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (merchandise_id) REFERENCES Merchandise(merchandise_id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Table created successfully<br>";
+} else {
+  echo "Error creating table: " . $conn->error;
+}
